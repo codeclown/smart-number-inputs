@@ -19,6 +19,12 @@ Manually attaching the event handler to affect dynamically created inputs using 
 $(document).on('keydown', 'input', smartNumberInputs.eventHandler);
 ```
 
+NPM:
+
+```
+const smartNumberInputs = require('smart-number-inputs');
+```
+
 
 ## Running tests
 
