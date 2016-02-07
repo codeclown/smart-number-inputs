@@ -2,6 +2,8 @@
 
 Increment/decrement number values in text inputs using up and down arrow keys.
 
+[Check out the demo.](https://jsfiddle.net/sz61fnmd/)
+
 
 ## Usage
 
