@@ -1,10 +1,10 @@
 {
   "name": "smart-number-inputs",
   "description": "Increment/decrement number values in text inputs using up and down arrow keys.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": "Martti Laine <martti@marttilaine.com>",
-  "main": "./src/index.js",
+  "main": "./build/smart-number-inputs.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/codeclown/smart-number-inputs.git"
