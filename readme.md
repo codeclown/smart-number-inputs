@@ -11,7 +11,7 @@ Increment/decrement number values in text inputs using up and down arrow keys.
 
 Vanilla API:
 
-```
+```javascript
 smartNumberInputs.enable(DOMElement element);
 smartNumberInputs.enable(DOMElement[] elements);
 smartNumberInputs.enable(NodeList elements);
@@ -19,13 +19,13 @@ smartNumberInputs.enable(NodeList elements);
 
 Manually attaching the event handler to affect dynamically created inputs using jQuery:
 
-```
+```javascript
 $(document).on('keydown', 'input', smartNumberInputs.eventHandler);
 ```
 
 NPM:
 
-```
+```javascript
 const smartNumberInputs = require('smart-number-inputs');
 ```
 

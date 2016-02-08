@@ -1,7 +1,7 @@
 {
   "name": "smart-number-inputs",
   "description": "Increment/decrement number values in text inputs using up and down arrow keys.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Martti Laine <martti@marttilaine.com>",
   "main": "./src/index.js",
