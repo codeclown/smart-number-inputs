@@ -48,7 +48,7 @@ node build.js
 
 Modern browsers.
 
-Utilizes `Array.forEach`, `addEventListener` and `DOMElement.setSelectionRange`. All of these can be polyfilled if support for ancient browsers is desired.
+Utilizes `addEventListener` and `DOMElement.setSelectionRange`. Both of these can be polyfilled if support for ancient browsers is desired.
 
 
 ## License
