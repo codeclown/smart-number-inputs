@@ -4,8 +4,6 @@ const test = require('tape');
 const modify = require('./src').modify;
 
 test('value', t => {
-    t.equal(modify(20, 0, 0, 1).value, '21');
-
     t.equal(modify('20', 0, 0, 1).value, '21');
     t.equal(modify('20', 1, 1, 1).value, '21');
     t.equal(modify('20', 2, 2, 1).value, '21');

@@ -13,6 +13,10 @@
 
     const on = (element, event, callback) => element.addEventListener(event, callback);
 
+    const forEach = (list, callback) => {
+        for(var i = 0; i < list.length; i++) callback(list[i]);
+    };
+
     const ARROW_UP = 38;
     const ARROW_DOWN = 40;
     const WHITESPACE = /(\s+)/;
@@ -38,19 +42,15 @@
     };
 
     const enable = element => {
-        if(isArray(element)) {
-            return element.forEach(enable);
-        }
-
-        if(element instanceof NodeList) {
-            return Array.prototype.forEach.call(element, enable);
+        if(isArray(element) || element instanceof NodeList) {
+            return forEach(element, enable);
         }
 
         on(element, 'keydown', eventHandler, false);
     };
 
     const modify = (value, start, end, addition) => {
-        const segments = value.toString().split(WHITESPACE);
+        const segments = value.split(WHITESPACE);
         
         // Will transform selection to encapsulate affected segments
         let newStart = null;
@@ -58,7 +58,7 @@
 
         let character = 0;
 
-        for(let i = 0, len = segments.length, originalValue; i < len; i++) {
+        for(let i = 0, originalValue; i < segments.length; i++) {
             originalValue = segments[i];
             character += originalValue.length;
 

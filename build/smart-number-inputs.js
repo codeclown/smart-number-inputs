@@ -30,6 +30,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return element.addEventListener(event, callback);
     };
 
+    var forEach = function forEach(list, callback) {
+        for (var i = 0; i < list.length; i++) {
+            callback(list[i]);
+        }
+    };
+
     var ARROW_UP = 38;
     var ARROW_DOWN = 40;
     var WHITESPACE = /(\s+)/;
@@ -55,19 +61,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     var enable = function enable(element) {
-        if (isArray(element)) {
-            return element.forEach(enable);
-        }
-
-        if (element instanceof NodeList) {
-            return Array.prototype.forEach.call(element, enable);
+        if (isArray(element) || element instanceof NodeList) {
+            return forEach(element, enable);
         }
 
         on(element, 'keydown', eventHandler, false);
     };
 
     var modify = function modify(value, start, end, addition) {
-        var segments = value.toString().split(WHITESPACE);
+        var segments = value.split(WHITESPACE);
 
         // Will transform selection to encapsulate affected segments
         var newStart = null;
@@ -75,7 +77,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         var character = 0;
 
-        for (var i = 0, len = segments.length, originalValue; i < len; i++) {
+        for (var i = 0, originalValue; i < segments.length; i++) {
             originalValue = segments[i];
             character += originalValue.length;
 
