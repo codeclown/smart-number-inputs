@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Support for delimiters such as ":".
+
 ## 1.0.3
 
 - Performance improvements
