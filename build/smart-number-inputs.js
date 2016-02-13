@@ -38,7 +38,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     var ARROW_UP = 38;
     var ARROW_DOWN = 40;
-    var WHITESPACE = /(\s+)/;
+    var DELIMITER = /([^\-\w0-9]+)/;
 
     var eventHandler = function eventHandler(event) {
         if (event.which !== ARROW_UP && event.which !== ARROW_DOWN) return;
@@ -69,7 +69,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     var modify = function modify(value, start, end, addition) {
-        var segments = value.split(WHITESPACE);
+        var segments = value.split(DELIMITER);
 
         // Will transform selection to encapsulate affected segments
         var newStart = null;
@@ -81,7 +81,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             originalValue = segments[i];
             character += originalValue.length;
 
-            if (originalValue.match(WHITESPACE)) continue;
+            if (originalValue.match(DELIMITER)) continue;
 
             if (character >= start) {
                 if (newStart === null) newStart = character - originalValue.length;

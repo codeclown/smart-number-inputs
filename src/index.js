@@ -19,7 +19,7 @@
 
     const ARROW_UP = 38;
     const ARROW_DOWN = 40;
-    const WHITESPACE = /(\s+)/;
+    const DELIMITER = /([^\-\w0-9]+)/;
 
     const eventHandler = event => {
         if(event.which !== ARROW_UP && event.which !== ARROW_DOWN) return;
@@ -50,8 +50,8 @@
     };
 
     const modify = (value, start, end, addition) => {
-        const segments = value.split(WHITESPACE);
-        
+        const segments = value.split(DELIMITER);
+
         // Will transform selection to encapsulate affected segments
         let newStart = null;
         let newEnd = null;
@@ -62,7 +62,7 @@
             originalValue = segments[i];
             character += originalValue.length;
 
-            if(originalValue.match(WHITESPACE)) continue;
+            if(originalValue.match(DELIMITER)) continue;
 
             if(character >= start) {
                 if(newStart === null) newStart = character - originalValue.length;

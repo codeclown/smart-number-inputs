@@ -53,6 +53,15 @@ test('value', t => {
     t.equal(modify('foo', 1, 1, 1).value, 'foo');
     t.equal(modify('foo', 2, 2, 1).value, 'foo');
 
+    t.equal(modify('10:15', 0, 0, 1).value, '11:15');
+    t.equal(modify('10:15', 1, 1, 1).value, '11:15');
+    t.equal(modify('10:15', 2, 2, 1).value, '11:15');
+    t.equal(modify('10:15', 3, 3, 1).value, '10:16');
+    t.equal(modify('10:15', 4, 4, 1).value, '10:16');
+    t.equal(modify('10:15', 5, 5, 1).value, '10:16');
+    t.equal(modify('10:15', 0, 5, 1).value, '11:16');
+    t.equal(modify('10:15', 1, 3, 1).value, '11:16');
+
     t.end();
 });
 
@@ -74,6 +83,15 @@ test('selection', t => {
 
     t.equal(modify('20 -1 20', 3, 5, 1).start, 3);
     t.equal(modify('20 -1 20', 3, 5, 1).end, 4);
+
+    t.equal(modify('10:15', 1, 1, 1).start, 0);
+    t.equal(modify('10:15', 1, 1, 1).end, 2);
+
+    t.equal(modify('10:15', 3, 3, 1).start, 3);
+    t.equal(modify('10:15', 3, 3, 1).end, 5);
+
+    t.equal(modify('10:15', 1, 3, 1).start, 0);
+    t.equal(modify('10:15', 1, 3, 1).end, 5);
 
     t.end();
 });
