@@ -48,7 +48,7 @@ node build.js
 
 Modern browsers.
 
-Utilizes `addEventListener` and `DOMElement.setSelectionRange`. Both of these can be polyfilled if support for ancient browsers is desired.
+Utilizes `addEventListener` (if using `smartNumberInputs.enable`) and `DOMElement.setSelectionRange`. Both of these can be polyfilled if support for ancient browsers is desired.
 
 
 ## License
