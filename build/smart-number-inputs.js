@@ -36,28 +36,40 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
     };
 
+    var fire = function fire(element, eventName) {
+        if ('createEvent' in document) {
+            var event = document.createEvent('HTMLEvents');
+            event.initEvent(eventName, false, true);
+            element.dispatchEvent(event);
+        } else {
+            element.fireEvent('on' + eventName);
+        }
+    };
+
     var ARROW_UP = 38;
     var ARROW_DOWN = 40;
     var DELIMITER = /([^\-\w0-9]+)/;
 
     var eventHandler = function eventHandler(event) {
-        if (event.which !== ARROW_UP && event.which !== ARROW_DOWN) return;
+        if (event.which === ARROW_UP || event.which === ARROW_DOWN) {
+            event.preventDefault();
 
-        event.preventDefault();
+            var input = event.currentTarget;
 
-        var input = event.currentTarget;
+            var value = input.value;
+            var start = input.selectionStart;
+            var end = input.selectionEnd;
 
-        var value = input.value;
-        var start = input.selectionStart;
-        var end = input.selectionEnd;
+            var addition = event.which === ARROW_UP ? 1 : -1;
+            if (event.shiftKey) addition *= 10;
 
-        var addition = event.which === ARROW_UP ? 1 : -1;
-        if (event.shiftKey) addition *= 10;
+            var modified = modify(value, start, end, addition);
 
-        var modified = modify(value, start, end, addition);
+            input.value = modified.value;
+            input.setSelectionRange(modified.start, modified.end);
 
-        input.value = modified.value;
-        input.setSelectionRange(modified.start, modified.end);
+            fire(input, 'change');
+        }
     };
 
     var enable = function enable(element) {

@@ -17,28 +17,40 @@
         for(var i = 0; i < list.length; i++) callback(list[i]);
     };
 
+    const fire = (element, eventName) => {
+        if('createEvent' in document) {
+            const event = document.createEvent('HTMLEvents');
+            event.initEvent(eventName, false, true);
+            element.dispatchEvent(event);
+        } else {
+            element.fireEvent(`on${eventName}`);
+        }
+    };
+
     const ARROW_UP = 38;
     const ARROW_DOWN = 40;
     const DELIMITER = /([^\-\w0-9]+)/;
 
     const eventHandler = event => {
-        if(event.which !== ARROW_UP && event.which !== ARROW_DOWN) return;
+        if(event.which === ARROW_UP || event.which === ARROW_DOWN) {
+            event.preventDefault();
 
-        event.preventDefault();
+            const input = event.currentTarget;
 
-        const input = event.currentTarget;
+            const value = input.value;
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
 
-        const value = input.value;
-        const start = input.selectionStart;
-        const end = input.selectionEnd;
+            let addition = event.which === ARROW_UP ? 1 : -1;
+            if(event.shiftKey) addition *= 10;
 
-        let addition = event.which === ARROW_UP ? 1 : -1;
-        if(event.shiftKey) addition *= 10;
+            const modified = modify(value, start, end, addition);
 
-        const modified = modify(value, start, end, addition);
+            input.value = modified.value;
+            input.setSelectionRange(modified.start, modified.end);
 
-        input.value = modified.value;
-        input.setSelectionRange(modified.start, modified.end);
+            fire(input, 'change');
+        }
     };
 
     const enable = element => {
