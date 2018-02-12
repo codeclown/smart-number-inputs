@@ -1,4 +1,4 @@
-# smart-number-inputs.js
+# smart-number-inputs
 
 Increment/decrement number values in text inputs using up and down arrow keys.
 
@@ -33,14 +33,14 @@ const smartNumberInputs = require('smart-number-inputs');
 ## Running tests
 
 ```
-node test.js
+npm test
 ```
 
 
 ## Building
 
 ```
-node build.js
+npm run build
 ```
 
 
