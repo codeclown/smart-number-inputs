@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const modify = require('./src').modify;
+const modify = require('../../src').modify;
 
 test('value', t => {
     t.equal(modify('20', 0, 0, 1).value, '21');

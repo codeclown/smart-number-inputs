@@ -1,4 +1,5 @@
-;(factory => {
+/* global define */
+(factory => {
     if(typeof exports === 'object' && typeof module === 'object') {
         module.exports = factory();
     } else if(typeof define === 'function' && define.amd) {
@@ -54,7 +55,7 @@
     };
 
     const enable = element => {
-        if(isArray(element) || element instanceof NodeList) {
+        if(isArray(element) || element instanceof NodeList || element instanceof HTMLCollection) {
             return forEach(element, enable);
         }
 
@@ -78,7 +79,7 @@
 
             if(character >= start) {
                 if(newStart === null) newStart = character - originalValue.length;
-                segments[i] = originalValue.replace(/\-?[0-9]+/, parseInt(originalValue.replace(/^.*?(\-?[0-9]+).*/, '$1'), 10) + addition);
+                segments[i] = originalValue.replace(/-?[0-9]+/, parseInt(originalValue.replace(/^.*?(-?[0-9]+).*/, '$1'), 10) + addition);
             }
 
             character -= originalValue.length - segments[i].length;

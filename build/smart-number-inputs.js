@@ -11,7 +11,8 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-;(function (factory) {
+/* global define */
+(function (factory) {
     if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
         module.exports = factory();
     } else if (typeof define === 'function' && define.amd) {
@@ -73,7 +74,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     var enable = function enable(element) {
-        if (isArray(element) || element instanceof NodeList) {
+        if (isArray(element) || element instanceof NodeList || element instanceof HTMLCollection) {
             return forEach(element, enable);
         }
 
@@ -97,7 +98,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             if (character >= start) {
                 if (newStart === null) newStart = character - originalValue.length;
-                segments[i] = originalValue.replace(/\-?[0-9]+/, parseInt(originalValue.replace(/^.*?(\-?[0-9]+).*/, '$1'), 10) + addition);
+                segments[i] = originalValue.replace(/-?[0-9]+/, parseInt(originalValue.replace(/^.*?(-?[0-9]+).*/, '$1'), 10) + addition);
             }
 
             character -= originalValue.length - segments[i].length;

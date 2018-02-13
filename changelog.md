@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- Support for `HTMLCollection`.
+
 ## 1.1.0
 
 - Support for delimiters such as ":".

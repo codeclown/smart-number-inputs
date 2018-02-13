@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <input id="input" type="text" value="10">
+        <div id="keydown-before"></div>
+        <div id="onkeydown"></div>
+        <div id="keydown-after"></div>
+        <script src="/build/smart-number-inputs.min.js"></script>
+        <script>
+            var input = document.getElementById('input');
+            input.addEventListener('keydown', function(event) {
+                document.getElementById('keydown-before').innerHTML = 'keydown-before'
+            });
+            input.onkeydown = function(event) {
+                document.getElementById('onkeydown').innerHTML = 'onkeydown'
+            };
+            smartNumberInputs.enable(input);
+            input.addEventListener('keydown', function(event) {
+                document.getElementById('keydown-after').innerHTML = 'keydown-after'
+            });
+        </script>
+    </body>
+</html>
