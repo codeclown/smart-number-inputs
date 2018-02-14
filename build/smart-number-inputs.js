@@ -1,8 +1,8 @@
 /*
  * smart-number-inputs.js
- * 
+ *
  * Increment/decrement number values in text inputs using up and down arrow keys.
- * 
+ *
  * Author: Martti Laine (@codeclown)
  * License: MIT
  * URL: https://github.com/codeclown/smart-number-inputs

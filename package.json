@@ -27,10 +27,10 @@
     "webdriverio": "^4.10.2"
   },
   "scripts": {
-    "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
+    "lint": "eslint 'src/**/*.js' 'test/**/*.js' 'scripts/**/*.js'",
     "test:unit": "node test/unit/index.js",
     "test:browser": "npm run build && wdio test/browser/wdio.config.js",
     "test": "npm run lint && npm run test:unit && npm run test:browser",
-    "build": "node build.js"
+    "build": "node scripts/build.js"
   }
 }
