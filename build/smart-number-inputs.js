@@ -117,5 +117,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         };
     };
 
-    return { eventHandler: eventHandler, enable: enable, modify: modify };
+    return {
+        // Public API
+        eventHandler: eventHandler,
+        enable: enable,
+        // For testing purposes
+        modify: modify
+    };
 });

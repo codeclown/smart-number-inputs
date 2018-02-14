@@ -28,7 +28,7 @@
   },
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'test/**/*.js' 'scripts/**/*.js'",
-    "test:unit": "node test/unit/index.js",
+    "test:unit": "npm run build && node test/unit/index.js",
     "test:browser": "npm run build && wdio test/browser/wdio.config.js",
     "test": "npm run lint && npm run test:unit && npm run test:browser",
     "build": "node scripts/build.js"

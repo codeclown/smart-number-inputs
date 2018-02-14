@@ -98,5 +98,11 @@
         };
     };
 
-    return { eventHandler, enable, modify };
+    return {
+        // Public API
+        eventHandler,
+        enable,
+        // For testing purposes
+        modify
+    };
 });

@@ -2,6 +2,8 @@
 
 const test = require('tape');
 const modify = require('../../src').modify;
+const build = require('../../build/smart-number-inputs');
+const buildMinified = require('../../build/smart-number-inputs.min');
 
 test('value', t => {
     t.equal(modify('20', 0, 0, 1).value, '21');
@@ -92,6 +94,20 @@ test('selection', t => {
 
     t.equal(modify('10:15', 1, 3, 1).start, 0);
     t.equal(modify('10:15', 1, 3, 1).end, 5);
+
+    t.end();
+});
+
+test('build', t => {
+    t.equal(typeof build.eventHandler, 'function');
+    t.equal(typeof build.enable, 'function');
+
+    t.end();
+});
+
+test('build.min', t => {
+    t.equal(typeof buildMinified.eventHandler, 'function');
+    t.equal(typeof buildMinified.enable, 'function');
 
     t.end();
 });
