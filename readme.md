@@ -4,6 +4,8 @@
 
 Increment/decrement number values in text inputs using up and down arrow keys.
 
+No external dependencies (<1kB gzipped).
+
 [Demo](https://jsfiddle.net/sz61fnmd/2/) | [NPM](https://www.npmjs.com/package/smart-number-inputs)
 
 ![Demo](https://raw.github.com/codeclown/smart-number-inputs/master/demo.gif)
