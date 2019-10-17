@@ -63,7 +63,7 @@ npm run build
 
 ## Browser support
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/smart-number-inputs.svg)](https://saucelabs.com/u/smart-number-inputs)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/smart-number-inputs.svg)](https://saucelabs.com/u/smart-number-inputs) [![Greenkeeper badge](https://badges.greenkeeper.io/codeclown/smart-number-inputs.svg)](https://greenkeeper.io/)
 
 Modern browsers.
 
