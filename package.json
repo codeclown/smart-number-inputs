@@ -15,16 +15,16 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "eslint": "^4.17.0",
+    "eslint": "^6.5.1",
     "eslint-plugin-webdriverio": "^1.0.1",
     "express": "^4.16.2",
     "tape": "^4.8.0",
-    "uglify-js": "^2.8.29",
-    "wdio-mocha-framework": "^0.5.12",
+    "uglify-js": "^3.6.2",
+    "wdio-mocha-framework": "^0.6.4",
     "wdio-sauce-service": "^0.4.8",
-    "wdio-selenium-standalone-service": "0.0.9",
+    "wdio-selenium-standalone-service": "0.0.12",
     "wdio-spec-reporter": "^0.1.3",
-    "webdriverio": "^4.10.2"
+    "webdriverio": "^5.15.1"
   },
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'test/**/*.js' 'scripts/**/*.js'",
