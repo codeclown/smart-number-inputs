@@ -3,12 +3,13 @@ const assert = require('assert');
 describe('jQuery', () => {
     it('should work with jQuery', async () => {
         await browser.url('/html/jQuery.html');
+        const input = await browser.$('#input');
 
-        assert.equal(await browser.getValue('#input'), '10');
+        assert.equal(await input.getValue(), '10');
 
-        await browser.click('#input');
+        await input.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.getValue('#input'), '11');
+        assert.equal(await input.getValue(), '11');
     });
 });

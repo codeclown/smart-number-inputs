@@ -3,72 +3,83 @@ const assert = require('assert');
 describe('vanilla', () => {
     it('should work with a single element', async () => {
         await browser.url('/html/vanilla.html');
+        const input = await browser.$('#input');
 
-        assert.equal(await browser.getValue('#input'), '10');
+        assert.equal(await input.getValue(), '10');
 
-        await browser.click('#input');
+        await input.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.getValue('#input'), '11');
+        assert.equal(await input.getValue(), '11');
     });
 
     it('should work with an array of elements', async () => {
         await browser.url('/html/vanilla-array.html');
+        const input1 = await browser.$('#input1');
+        const input2 = await browser.$('#input2');
 
-        assert.equal(await browser.getValue('#input1'), '10');
-        assert.equal(await browser.getValue('#input2'), '20');
+        assert.equal(await input1.getValue(), '10');
+        assert.equal(await input2.getValue(), '20');
 
-        await browser.click('#input1');
+        await input1.click();
         await browser.keys(['Up arrow']);
-        await browser.click('#input2');
+        await input2.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.getValue('#input1'), '11');
-        assert.equal(await browser.getValue('#input2'), '21');
+        assert.equal(await input1.getValue(), '11');
+        assert.equal(await input2.getValue(), '21');
     });
 
     it('should work with a NodeList', async () => {
         await browser.url('/html/vanilla-NodeList.html');
+        const input1 = await browser.$('#input1');
+        const input2 = await browser.$('#input2');
 
-        assert.equal(await browser.getValue('#input1'), '10');
-        assert.equal(await browser.getValue('#input2'), '20');
+        assert.equal(await input1.getValue(), '10');
+        assert.equal(await input2.getValue(), '20');
 
-        await browser.click('#input1');
+        await input1.click();
         await browser.keys(['Up arrow']);
-        await browser.click('#input2');
+        await input2.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.getValue('#input1'), '11');
-        assert.equal(await browser.getValue('#input2'), '21');
+        assert.equal(await input1.getValue(), '11');
+        assert.equal(await input2.getValue(), '21');
     });
 
     it('should work with a HTMLCollection', async () => {
         await browser.url('/html/vanilla-HTMLCollection.html');
+        const input1 = await browser.$('#input1');
+        const input2 = await browser.$('#input2');
 
-        assert.equal(await browser.getValue('#input1'), '10');
-        assert.equal(await browser.getValue('#input2'), '20');
+        assert.equal(await input1.getValue(), '10');
+        assert.equal(await input2.getValue(), '20');
 
-        await browser.click('#input1');
+        await input1.click();
         await browser.keys(['Up arrow']);
-        await browser.click('#input2');
+        await input2.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.getValue('#input1'), '11');
-        assert.equal(await browser.getValue('#input2'), '21');
+        assert.equal(await input1.getValue(), '11');
+        assert.equal(await input2.getValue(), '21');
     });
 
     it('should not block event listeners', async () => {
         await browser.url('/html/vanilla-events.html');
+        const keydownBefore = await browser.$('div=keydown-before');
+        const onkeydown = await browser.$('div=onkeydown');
+        const keydownAfter = await browser.$('div=keydown-after');
+        const input = await browser.$('#input');
 
-        assert.equal(await browser.isVisible('div=keydown-before'), false);
-        assert.equal(await browser.isVisible('div=onkeydown'), false);
-        assert.equal(await browser.isVisible('div=keydown-after'), false);
+        assert.equal(await keydownBefore.isDisplayed(), false);
+        assert.equal(await onkeydown.isDisplayed(), false);
+        assert.equal(await keydownAfter.isDisplayed(), false);
 
-        await browser.click('#input');
+        await input.click();
         await browser.keys(['Up arrow']);
 
-        assert.equal(await browser.isVisible('div=keydown-before'), true);
-        assert.equal(await browser.isVisible('div=onkeydown'), true);
-        assert.equal(await browser.isVisible('div=keydown-after'), true);
+        assert.equal(await keydownBefore.isDisplayed(), true);
+        assert.equal(await onkeydown.isDisplayed(), true);
+        assert.equal(await keydownAfter.isDisplayed(), true);
     });
 });

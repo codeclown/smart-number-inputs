@@ -42,30 +42,33 @@ if (process.env.TRAVIS) {
     exports.config.sauceConnect = true;
 
     const commonCapabilities = {
-        platform: 'Windows 10',
-        build: process.env.TRAVIS_BUILD_NUMBER
+        build: process.env.TRAVIS_BUILD_NUMBER,
+        public: true
     };
     exports.config.capabilities = [
         {
             browserName: 'chrome',
-            version: '64.0'
+            platform: 'Windows 7',
+            version: '61'
         },
         {
             browserName: 'firefox',
-            version: '58.0'
+            version: '52'
         },
         {
             browserName: 'internet explorer',
-            version: '11.103'
+            platform: 'Windows 7',
+            version: '10.0'
         },
         {
             browserName: 'MicrosoftEdge',
-            version: '15.15063'
+            platform: 'Windows 10',
+            version: '16.16299'
         },
         {
             browserName: 'safari',
             platform: 'macOS 10.13',
-            version: '11.0'
+            version: '11.1'
         }
     ].map(specs => Object.assign({}, commonCapabilities, specs));
 }

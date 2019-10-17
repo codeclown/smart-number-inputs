@@ -25,5 +25,5 @@ const minified = path.join(__dirname, '../build/smart-number-inputs.min.js');
 const oldSchool = babel.transformFileSync(source, { presets: ['es2015'] });
 fs.writeFileSync(destination, header + oldSchool.code);
 
-const uglified = uglify.minify(oldSchool.code, { fromString: true });
+const uglified = uglify.minify(oldSchool.code);
 fs.writeFileSync(minified, header + uglified.code);
